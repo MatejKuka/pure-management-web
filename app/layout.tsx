@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Inria_Sans } from 'next/font/google'
 import './globals.css'
 import React from "react";
+import Navigation from "@/components/common/Navigation";
+import Sidebar from "@/components/common/sidebar/Sidebar";
 
 const inter = Inria_Sans({weight: ["300", "400", "700"], style: ["normal", "italic"], subsets: ['latin'] })
 
@@ -17,7 +19,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Navigation />
+        <div className={"grid grid-cols-12"}>
+          <Sidebar />
+          <main className={"col-span-10"}>
+            {children}
+          </main>
+        </div>
+      </body>
     </html>
   )
 }
