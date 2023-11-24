@@ -38,9 +38,20 @@ const WAREHOUSES_DEMO_DATA = [
   createWarehouseObject(5, "Copenhagen Warehouse n.1", "Vigerslevvej 344, 2500 Valby", "matokuka66gdfg@gmail.com"),
 ];
 
+const USER_DEMO_DATA = {
+  id: 1,
+  name: "Matej Kuka",
+  role: "Admin",
+  emailAddress: "matokuka66@gmail.com",
+  password: "***********",
+  companyId: 45,
+  company: "Zvolenský s.r.o"
+}
+
 export {
   createItemObject,
   ITEMS_DEMO_DATA,
   WAREHOUSES_DEMO_DATA,
-  createWarehouseObject
+  createWarehouseObject,
+  USER_DEMO_DATA
 };
