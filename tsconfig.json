@@ -22,6 +22,14 @@
       "@/*": ["./*"]
     }
   },
+  // Custom code to avoid Cypress error
+  "ts-node": {
+    "compilerOptions": {
+      "module": "ESNext",
+      "moduleResolution": "Node"
+    }
+  },
+  // end
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

@@ -4,6 +4,7 @@ import './globals.css'
 import React from "react";
 import Navigation from "@/components/common/Navigation";
 import Sidebar from "@/components/common/sidebar/Sidebar";
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inria_Sans({weight: ["300", "400", "700"], style: ["normal", "italic"], subsets: ['latin'] })
 
@@ -27,6 +28,7 @@ export default function RootLayout({
             {children}
           </main>
         </div>
+        <Toaster data-testid={"action-toast"} />
       </body>
     </html>
   )
