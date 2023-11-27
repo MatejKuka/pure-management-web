@@ -17,3 +17,5 @@ jobs:
       run: npm i
     - name: Unit testing
       run: npm test
+    - name: E2e testing
+      run: npm cy:run
