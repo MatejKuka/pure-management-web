@@ -82,10 +82,20 @@
   body {
     @apply bg-background text-foreground;
   }
+  /* Custom CSS classes */
   .header-table-row-element {
     @apply font-bold bg-primary-color text-[1rem] text-white ;
   }
   .h1-table-element {
     @apply font-bold text-primary-color p-4 text-2xl ;
+  }
+  .profile-form-field {
+    @apply grid grid-cols-12
+  }
+  .profile-form-label {
+    @apply col-span-3 my-auto text-3xl
+  }
+  .profile-form-input {
+    @apply col-span-9 shadow-md
   }
 }
