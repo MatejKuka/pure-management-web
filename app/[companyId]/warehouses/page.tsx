@@ -14,7 +14,7 @@ function Page() {
         </div>
         <div>
           {WAREHOUSES_DEMO_DATA.map(warehouse => (
-            <WarehouseCard key={warehouse.id} name={warehouse.name} address={warehouse.address} redirectUrlPath={"warehouses/" + warehouse.id.toString()}/>
+            <WarehouseCard key={warehouse.id} name={warehouse.name} address={warehouse.address} redirectUrlPath={"/1/warehouses/" + warehouse.id.toString()}/>
           ))}
         </div>
       </div>
