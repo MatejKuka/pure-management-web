@@ -6,7 +6,6 @@ import {Button} from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -14,30 +13,34 @@ import {
 } from "@/components/ui/form"
 import {Input} from "@/components/ui/input"
 import * as z from "zod"
+import {useToast} from "@/components/ui/use-toast"
 
 
 const formSchema = z.object({
-  firstName: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-  lastName: z.string(),
-  email: z.string().email(),
-  password: z.string(),
+  firstName: z.string().min(2).max(25),
+  lastName: z.string().min(2).max(25),
+  email: z.string().email().max(50).min(3),
+  //password: z.string(),
 })
 
 function Page() {
+  const {toast} = useToast()
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       firstName: "",
       lastName: "",
       email: "",
-      password: "",
+      //password: "",
     },
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values)
+    toast({
+      description: "Succesfully changed your profile",
+    });
   }
 
   return (
@@ -52,9 +55,9 @@ function Page() {
                 <FormItem className={"profile-form-field"}>
                   <FormLabel className={"profile-form-label text-xl"}>First name:</FormLabel>
                   <FormControl className={"profile-form-input"}>
-                    <Input {...field} />
+                    <Input data-testid={"action-first-name"} {...field} />
                   </FormControl>
-                  <FormMessage className={"col-span-9"}/>
+                  <FormMessage data-testid={"error-first-name"} className={"col-span-9"}/>
                 </FormItem>
 
               )}
@@ -66,9 +69,9 @@ function Page() {
                 <FormItem className={"profile-form-field"}>
                   <FormLabel className={"profile-form-label text-xl"}>Last name:</FormLabel>
                   <FormControl className={"profile-form-input"}>
-                    <Input {...field} />
+                    <Input data-testid={"action-last-name"} {...field} />
                   </FormControl>
-                  <FormMessage className={"col-span-9"}/>
+                  <FormMessage data-testid={"error-last-name"} className={"col-span-9"}/>
                 </FormItem>
               )}
             />
@@ -79,13 +82,13 @@ function Page() {
                 <FormItem className={"profile-form-field"}>
                   <FormLabel className={"profile-form-label text-xl"}>Email:</FormLabel>
                   <FormControl className={"profile-form-input"}>
-                    <Input {...field} />
+                    <Input data-testid={"action-email"} {...field} />
                   </FormControl>
-                  <FormMessage className={"col-span-9"}/>
+                  <FormMessage data-testid={"error-email"} className={"col-span-9"}/>
                 </FormItem>
               )}
             />
-            <FormField
+            {/*<FormField
               control={form.control}
               name="password"
               render={({field}) => (
@@ -97,8 +100,8 @@ function Page() {
                   <FormMessage className={"col-span-9"}/>
                 </FormItem>
               )}
-            />
-            <Button type="submit">Submit</Button>
+            />*/}
+            <Button data-cy="submit" type="submit">Submit</Button>
           </form>
         </Form>
       </div>
