@@ -18,4 +18,4 @@ jobs:
     - name: Unit testing
       run: npm test
     - name: E2e testing
-      run: npm cy:run
+      run: npm run cy:run
