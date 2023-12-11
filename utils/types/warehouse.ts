@@ -3,4 +3,5 @@ export type Warehouse = {
   name: string;
   address: string;
   emailAddress: string;
+  companyId: number
 };
