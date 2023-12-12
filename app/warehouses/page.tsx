@@ -7,7 +7,7 @@ import myAxios from "@/API";
 import {Warehouse} from "@/utils/types/warehouse";
 
 function Page() {
-  const { data} = useQuery<Warehouse[]>({
+  const { data, isLoading, isError} = useQuery<Warehouse[]>({
     queryKey: ["warehouses"],
     queryFn: async () => {
       const response = await myAxios.get("Warehouse")
@@ -15,6 +15,13 @@ function Page() {
     }
   });
 
+  if (isLoading) return (
+    <div>Loading...</div>
+  )
+
+  if (isError) return (
+    <div>Not found.</div>
+  )
 
   return (
     <div>
