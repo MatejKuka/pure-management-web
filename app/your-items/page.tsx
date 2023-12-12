@@ -11,10 +11,10 @@ import {
 import {Button} from "@/components/ui/button";
 import AddNewItemDialog from "@/components/global-items/AddNewItemDialog";
 import {ITEMS_DEMO_DATA} from "@/utils/demo-data";
-import {ItemObject} from "@/utils/types/Item";
+import {Product} from "@/utils/types/Product";
 
 function Page() {
-  const [currentItem, setCurrentItem] = useState<ItemObject | undefined>();
+  const [currentItem, setCurrentItem] = useState<Product | undefined>();
 
   return (
     <div>
