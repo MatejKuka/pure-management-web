@@ -7,7 +7,7 @@ import myAxios from "@/API";
 function Page({params}: { params: { warehouseId: string } }) {
 
   const { data, isLoading, isError } = useQuery<Warehouse>({
-    queryKey: ["warehouses", params.warehouseId],
+    queryKey: ["warehouse", params.warehouseId],
     queryFn: async () => {
       const response = await myAxios.get(`Warehouse/${params.warehouseId}`)
       return response.data;

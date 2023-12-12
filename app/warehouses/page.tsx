@@ -1,5 +1,5 @@
 "use client"
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import AddNewWarehouseDialog from "@/components/global-warehouses/AddNewWarehouseDialog";
 import WarehouseCard from "@/components/global-warehouses/WarehouseCard";
 import {useQuery} from "@tanstack/react-query";
@@ -7,6 +7,7 @@ import myAxios from "@/API";
 import {Warehouse} from "@/utils/types/warehouse";
 
 function Page() {
+  const [warehouses, setNewWarehouses] = useState<Warehouse[] | null>(null);
   const { data, isLoading, isError} = useQuery<Warehouse[]>({
     queryKey: ["warehouses"],
     queryFn: async () => {
@@ -14,6 +15,10 @@ function Page() {
       return response.data;
     }
   });
+
+  useEffect(() => {
+    if (data) setNewWarehouses(data);
+  },[data]);
 
   if (isLoading) return (
     <div>Loading...</div>
@@ -28,10 +33,13 @@ function Page() {
       <div>
         <div className={"flex items-center"}>
           <h1 className={"h1-table-element"}>All warehouses</h1>
-          <AddNewWarehouseDialog />
+          <AddNewWarehouseDialog onCreateWarehouse={(newWarehouse) => setNewWarehouses((oldArray) => {
+            if (oldArray) return [...oldArray, newWarehouse]
+            else return [newWarehouse]
+          })} />
         </div>
         <div>
-          {data?.map(warehouse => (
+          {warehouses?.map(warehouse => (
             <WarehouseCard key={warehouse.id} name={warehouse.name} address={warehouse.address} redirectUrlPath={"warehouses/" + warehouse.id.toString()}/>
           ))}
         </div>
