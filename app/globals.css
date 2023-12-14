@@ -89,6 +89,9 @@
   .h1-table-element {
     @apply font-bold text-primary-color p-4 text-2xl ;
   }
+  .h2-element {
+    @apply font-bold text-primary-color p-4 text-2xl ;
+  }
   .profile-form-field {
     @apply grid grid-cols-12
   }

@@ -1,38 +1,25 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {Warehouse} from "@/utils/types/warehouse";
 
-const initialState: {value: Warehouse[]} = {
-  value: [] as Warehouse[]
+const initialState: {value: Warehouse | null} = {
+  value: null
 }
 
 export const warehouseSlice = createSlice({
-  name: "warehouses",
+  name: "warehouse",
   initialState,
   reducers: {
     logout: () => {
       return initialState;
     },
-    fetchWarehouses: (state, action: PayloadAction<Warehouse[]>) => {
+    setWarehouse: (state, action: PayloadAction<Warehouse>) => {
       state.value = action.payload;
-    },
-    addNewWarehouse: (state, action: PayloadAction<Warehouse>) => {
-      state.value.concat(action.payload);
     }
   }
 });
 
 export const {
-  addNewWarehouse,
   logout,
-  fetchWarehouses,
+  setWarehouse,
 } = warehouseSlice.actions;
 export default warehouseSlice.reducer;
-
-/*
-{
-  id: 0,
-    name: "",
-  address: "",
-  emailAddress: "",
-}
-*/

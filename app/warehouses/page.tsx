@@ -8,6 +8,7 @@ import {Warehouse} from "@/utils/types/warehouse";
 
 function Page() {
   const [warehouses, setNewWarehouses] = useState<Warehouse[] | null>(null);
+
   const { data, isLoading, isError} = useQuery<Warehouse[]>({
     queryKey: ["warehouses"],
     queryFn: async () => {
@@ -40,7 +41,7 @@ function Page() {
         </div>
         <div>
           {warehouses?.map(warehouse => (
-            <WarehouseCard key={warehouse.id} name={warehouse.name} address={warehouse.address} redirectUrlPath={"warehouses/" + warehouse.id.toString()}/>
+            <WarehouseCard key={warehouse.id} warehouse={warehouse} redirectUrlPath={"warehouses/" + warehouse.id.toString()}/>
           ))}
         </div>
       </div>
