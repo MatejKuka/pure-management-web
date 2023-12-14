@@ -63,11 +63,10 @@ function Page({params}: { params: { warehouseId: string } }) {
   )
 
   return (
-    <div>
-      <p>{params.warehouseId}</p>
-      <p>Name: {data?.name}</p>
-      <p>Address: {data?.address}</p>
-      <p>Email address: {data?.emailAddress}</p>
+    <div className={"flex gap-4 flex-col justify-center items-center pt-24"}>
+      <p className={"warehouse-details-paragraph"}><span>Name:</span> {warehouse?.name}</p>
+      <p className={"warehouse-details-paragraph"}><span>Address:</span> {warehouse?.address}</p>
+      <p className={"warehouse-details-paragraph"}><span>Email address:</span> {warehouse?.emailAddress}</p>
       <Button onClick={deleteWarehouseHandler}>Delete</Button>
     </div>
   );
