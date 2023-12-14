@@ -9,7 +9,7 @@ export const warehouseSlice = createSlice({
   name: "warehouse",
   initialState,
   reducers: {
-    logout: () => {
+    deleteWarehouse: () => {
       return initialState;
     },
     setWarehouse: (state, action: PayloadAction<Warehouse>) => {
@@ -19,7 +19,7 @@ export const warehouseSlice = createSlice({
 });
 
 export const {
-  logout,
+  deleteWarehouse,
   setWarehouse,
 } = warehouseSlice.actions;
 export default warehouseSlice.reducer;

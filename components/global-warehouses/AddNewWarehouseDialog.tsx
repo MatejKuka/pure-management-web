@@ -43,7 +43,7 @@ interface IProps {
 }
 
 const AddNewWarehouseDialog: React.FC<IProps> = ({onCreateWarehouse}) => {
-  const {mutateAsync, mutate} = useMutation({
+  const {mutateAsync} = useMutation({
     mutationKey: ["new-warehouse"],
     mutationFn: createNewWarehouse
   });

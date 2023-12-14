@@ -36,7 +36,7 @@ function Page() {
         </TableHeader>
         <TableBody>
             {ITEMS_DEMO_DATA.map(item => (
-              <TableRow onClick={()=> setCurrentItem(item)}>
+              <TableRow key={item.id} onClick={()=> setCurrentItem(item)}>
                 <TableCell>{item.id}</TableCell>
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.warehouse}</TableCell>

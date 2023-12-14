@@ -2,7 +2,7 @@ import React from 'react';
 
 function Page() {
   return (
-    <div>fdfdfd</div>
+    <div>Storage items</div>
   );
 }
 
