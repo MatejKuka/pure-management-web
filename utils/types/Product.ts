@@ -3,6 +3,6 @@ export type Product = {
   name: string;
   warehouse: string;
   pricePerUnit: number;
-  quantity: number;
-  total: number;
+  quantity?: number;
+  total?: number;
 };
