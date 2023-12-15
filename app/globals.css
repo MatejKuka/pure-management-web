@@ -86,8 +86,17 @@
   .header-table-row-element {
     @apply font-bold bg-primary-color text-[1rem] text-white ;
   }
+  .warehouse-details-paragraph {
+    @apply text-2xl
+  }
+  .warehouse-details-paragraph span{
+    @apply font-bold
+  }
   .h1-table-element {
-    @apply font-bold text-primary-color p-4 text-2xl ;
+    @apply font-bold text-primary-color p-4 text-2xl;
+  }
+  .h2-element {
+    @apply font-bold text-primary-color p-4 text-2xl;
   }
   .profile-form-field {
     @apply grid grid-cols-12
