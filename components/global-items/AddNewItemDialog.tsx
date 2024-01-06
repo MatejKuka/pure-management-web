@@ -81,7 +81,7 @@ const AddNewItemDialog: React.FC<IProps> = ({}) => {
                     <FormItem>
                       <FormLabel>Price per unit</FormLabel>
                       <FormControl>
-                        <Input placeholder="Price per unit" {...field} />
+                        <Input type="number" placeholder="Price per unit" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -94,7 +94,7 @@ const AddNewItemDialog: React.FC<IProps> = ({}) => {
                     <FormItem>
                       <FormLabel>Quantity</FormLabel>
                       <FormControl>
-                        <Input placeholder="Quantity" {...field} />
+                        <Input type="number" placeholder="Quantity" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
