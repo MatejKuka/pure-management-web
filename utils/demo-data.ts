@@ -1,7 +1,7 @@
-import {ItemObject} from "@/utils/types/Item";
+import {Product} from "@/utils/types/Product";
 import {Warehouse} from "@/utils/types/warehouse";
 
-const createItemObject = (id: number, name: string, warehouse: string, pricePerUnit: number, quantity: number): ItemObject => {
+const createItemObject = (id: number, name: string, warehouse: string, pricePerUnit: number, quantity: number): Product => {
   const total = pricePerUnit * quantity;
   return {
     id,

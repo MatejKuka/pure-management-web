@@ -3,4 +3,12 @@ export type Warehouse = {
   name: string;
   address: string;
   emailAddress: string;
+  companyId: number
+};
+
+export type CreateWarehouse = {
+  name: string;
+  address: string;
+  emailAddress: string;
+  companyId: number
 };
