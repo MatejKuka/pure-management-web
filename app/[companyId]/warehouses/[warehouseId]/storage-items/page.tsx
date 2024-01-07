@@ -3,7 +3,7 @@ import AddNewItemDialog from "@/components/global-items/AddNewItemDialog";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {Button} from "@/components/ui/button";
 import {Product} from "@/utils/types/Product";
-import {useQuery} from "@tanstack/react-query/build/modern/index";
+import {useQuery} from "@tanstack/react-query";
 import myAxios from "@/API";
 
 function Page() {
@@ -34,7 +34,6 @@ function Page() {
         <AddNewItemDialog />
       </div>
       <Table className={"w-auto"}>
-        {/*<TableCaption>A list of your recent invoices.</TableCaption>*/}
         <TableHeader>
           <TableRow>
             <TableHead className={"header-table-row-element text-white"}>Id</TableHead>
