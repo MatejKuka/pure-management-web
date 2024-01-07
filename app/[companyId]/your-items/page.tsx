@@ -20,7 +20,7 @@ function Page() {
   const { data, isLoading, isError} = useQuery<Product[]>({
     queryKey: ["your-items"],
     queryFn: async () => {
-      const response = await myAxios.get("Product")
+      const response = await myAxios.get(`Company/${localStorage.getItem("companyId")}`)
       return response.data;
     }
   });
