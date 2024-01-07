@@ -13,10 +13,13 @@ import {
 import {USER_DEMO_DATA} from "@/utils/demo-data";
 import { Separator } from "@/components/ui/separator"
 import SidebarItem from "@/components/common/sidebar/SidebarItem";
-
-
+import {useDispatch} from "react-redux";
+import {AppDispatch} from "@/redux/store";
+import {logout} from "@/redux/features/auth-slice";
 
 function Navigation() {
+  const dispatch = useDispatch<AppDispatch>();
+
   return (
     <nav className={"p-6 flex justify-between"}>
       <div className={"max-w-[20%]"}><Link href={"/"}><Image src={PureManagementLogo} alt={"Pure Management Logo"}/></Link></div>
@@ -33,7 +36,7 @@ function Navigation() {
           <p className={"mb-4 pl-2"}>{USER_DEMO_DATA.company}</p>
           <Separator />
           <SidebarItem className={"justify-center"} alt={"Profile settings"} redirectUrlPath={"/profile"} text={"Profile settings"} imagePath={SettingsImage} />
-          <p className={"text-primary-color text-center text-xl cursor-pointer"}>Log out</p>
+          <p className={"text-primary-color text-center text-xl cursor-pointer"} onClick={() => dispatch(logout())}>Log out</p>
         </PopoverContent>
       </Popover>
     </nav>

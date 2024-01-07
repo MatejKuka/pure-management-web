@@ -25,13 +25,7 @@ export default function RootLayout({
       <body className={inter.className}>
       <QueryProvider>
         <ReduxProvider>
-          <Navigation />
-          <div className={"grid grid-cols-12"}>
-            <Sidebar />
-            <main className={"col-span-10"}>
-              {children}
-            </main>
-          </div>
+          {children}
           <Toaster data-testid={"action-toast"} />
         </ReduxProvider>
       </QueryProvider>
