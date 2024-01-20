@@ -11,27 +11,10 @@ import {
 import {Button} from "@/components/ui/button";
 import AddNewItemDialog from "@/components/global-items/AddNewItemDialog";
 import {Product} from "@/utils/types/Product";
-import {useQuery} from "@tanstack/react-query";
-import myAxios from "@/API";
+import {ITEMS_DEMO_DATA} from "@/utils/demo-data";
 
 function Page() {
   const [currentItem, setCurrentItem] = useState<Product | undefined>();
-
-  const { data, isLoading, isError} = useQuery<Product[]>({
-    queryKey: ["your-items"],
-    queryFn: async () => {
-      const response = await myAxios.get(`Company/${localStorage.getItem("companyId")}`)
-      return response.data;
-    }
-  });
-
-  if (isLoading) return (
-    <div>Loading...</div>
-  )
-
-  if (isError) return (
-    <div>Not found.</div>
-  )
 
   return (
     <div>
@@ -52,7 +35,7 @@ function Page() {
           </TableRow>
         </TableHeader>
         <TableBody>
-            {data?.map(item => (
+            {ITEMS_DEMO_DATA.map(item => (
               <TableRow key={item.id} onClick={()=> setCurrentItem(item)}>
                 <TableCell>{item.id}</TableCell>
                 <TableCell>{item.name}</TableCell>

@@ -1,52 +1,42 @@
+"use client"
 import React, {useState} from 'react';
 import AddNewItemDialog from "@/components/global-items/AddNewItemDialog";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
 import {Button} from "@/components/ui/button";
-import {Product} from "@/utils/types/Product";
-import {useQuery} from "@tanstack/react-query";
-import myAxios from "@/API";
+import {USERS_DEMO_DATA} from "@/utils/demo-data";
+import {IUser} from "@/redux/features/auth-slice";
+import AddNewUserDialog from "@/components/user-components/AddNewUserDialog";
 
 function Page() {
-  const [currentUsers, setCurrentUsers] = useState<Users[] | undefined>();
+  const [currentUser, setCurrentUser] = useState<IUser>();
 
-  const { data, isLoading, isError} = useQuery<Product[]>({
-    queryKey: ["users"],
-    queryFn: async () => {
-      const response = await myAxios.get(`companyusers/${localStorage.getItem("companyId")}`)
-      return response.data;
-    }
-  });
-
-  if (isLoading) return (
-    <div>Loading...</div>
-  )
-
-  if (isError) return (
-    <div>Not found.</div>
-  )
   return (
     <div>
       <div className={"flex items-center gap-0"}>
         <h1 className={"h1-table-element"}>Users</h1>
-        <AddNewItemDialog />
+        <AddNewUserDialog onSubmitForm={(values) => console.log(values)}/>
       </div>
       <Table className={"w-auto"}>
         <TableHeader>
           <TableRow>
             <TableHead className={"header-table-row-element text-white"}>Id</TableHead>
             <TableHead className={"header-table-row-element text-white"}>Name</TableHead>
+            <TableHead className={"header-table-row-element text-white"}>Role</TableHead>
+            <TableHead className={"header-table-row-element text-white"}>Email Address</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data?.map(item => (
-            <TableRow key={item.id} onClick={()=> setCurrentUsers(item)}>
+          {USERS_DEMO_DATA?.map(item => (
+            <TableRow key={item.id} onClick={()=> setCurrentUser(item)}>
               <TableCell>{item.id}</TableCell>
               <TableCell>{item.name}</TableCell>
+              <TableCell>{item.role}</TableCell>
+              <TableCell>{item.emailAddress}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      <Button disabled={!currentUsers}>Update</Button>
+      <Button disabled={!currentUser}>Update</Button>
     </div>
   );
 }

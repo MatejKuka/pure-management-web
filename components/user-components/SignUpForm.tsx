@@ -23,9 +23,9 @@ const formSchema = z.object({
   companyName: z.string().min(2).max(30),
 })
 interface IProps {
-
+  onSubmitForm: (values: z.infer<typeof formSchema>) => void
 }
-const SignUpForm: React.FC<IProps> = ({}) => {
+const SignUpForm: React.FC<IProps> = ({onSubmitForm}) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -38,7 +38,7 @@ const SignUpForm: React.FC<IProps> = ({}) => {
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+    onSubmitForm(values)
   }
 
   return (

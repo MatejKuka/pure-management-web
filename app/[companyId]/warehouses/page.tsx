@@ -1,33 +1,13 @@
 "use client"
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import AddNewWarehouseDialog from "@/components/global-warehouses/AddNewWarehouseDialog";
 import WarehouseCard from "@/components/global-warehouses/WarehouseCard";
-import {useQuery} from "@tanstack/react-query";
-import myAxios from "@/API";
+
 import {Warehouse} from "@/utils/types/warehouse";
+import {WAREHOUSES_DEMO_DATA} from "@/utils/demo-data";
 
 function Page() {
-  const [warehouses, setNewWarehouses] = useState<Warehouse[] | null>(null);
-
-  const { data, isLoading, isError} = useQuery<Warehouse[]>({
-    queryKey: ["warehouses"],
-    queryFn: async () => {
-      const response = await myAxios.get("Warehouse")
-      return response.data;
-    }
-  });
-
-  useEffect(() => {
-    if (data) setNewWarehouses(data);
-  },[data]);
-
-  if (isLoading) return (
-    <div>Loading...</div>
-  )
-
-  if (isError) return (
-    <div>Not found.</div>
-  )
+  const [warehouses, setNewWarehouses] = useState<Warehouse[]>(WAREHOUSES_DEMO_DATA);
 
   return (
     <div>
@@ -40,7 +20,7 @@ function Page() {
           })} />
         </div>
         <div>
-          {warehouses?.map(warehouse => (
+          {WAREHOUSES_DEMO_DATA?.map(warehouse => (
             <WarehouseCard key={warehouse.id} warehouse={warehouse} redirectUrlPath={"warehouses/" + warehouse.id.toString()}/>
           ))}
         </div>

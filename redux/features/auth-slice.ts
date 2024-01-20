@@ -3,6 +3,12 @@ import {Product} from "@/utils/types/Product";
 
 export interface IUser {
   id: number;
+  name: string;
+  role: string;
+  emailAddress: string,
+  password: string,
+  companyId: number,
+  company: string
 }
 
 const initialState: {value: IUser} = {

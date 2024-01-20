@@ -23,7 +23,7 @@ function Navigation() {
 
   return (
     <nav className={"p-6 flex justify-between"}>
-      <div className={"max-w-[20%]"}><Link href={"/"}><Image src={PureManagementLogo} alt={"Pure Management Logo"}/></Link></div>
+      <div className={"max-w-[20%]"}><Link href={"/1/your-items"}><Image src={PureManagementLogo} alt={"Pure Management Logo"}/></Link></div>
       <Popover>
         <PopoverTrigger>
           <Avatar>
