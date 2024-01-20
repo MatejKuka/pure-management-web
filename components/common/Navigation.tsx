@@ -17,9 +17,11 @@ import SidebarItem from "@/components/common/sidebar/SidebarItem";
 import {useDispatch} from "react-redux";
 import {AppDispatch} from "@/redux/store";
 import {logout} from "@/redux/features/auth-slice";
+import {useRouter} from "next/navigation";
 
 function Navigation() {
   const dispatch = useDispatch<AppDispatch>();
+  const router = useRouter();
 
   return (
     <nav className={"p-6 flex justify-between"}>
@@ -36,8 +38,11 @@ function Navigation() {
           <p className={"pl-2 font-semibold"}>role: {USER_DEMO_DATA.role}</p>
           <p className={"mb-4 pl-2"}>{USER_DEMO_DATA.company}</p>
           <Separator />
-          <SidebarItem className={"justify-center"} alt={"Profile settings"} redirectUrlPath={"/profile"} text={"Profile settings"} imagePath={SettingsImage} />
-          <p className={"text-primary-color text-center text-xl cursor-pointer"} onClick={() => dispatch(logout())}>Log out</p>
+          <SidebarItem className={"justify-center"} alt={"Profile settings"} redirectUrlPath={"/1/profile"} text={"Profile settings"} imagePath={SettingsImage} />
+          <p className={"text-primary-color text-center text-xl cursor-pointer"} onClick={() => {
+            dispatch(logout());
+            router.push("/");
+          }}>Log out</p>
         </PopoverContent>
       </Popover>
     </nav>

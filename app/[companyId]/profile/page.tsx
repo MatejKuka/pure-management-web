@@ -14,6 +14,7 @@ import {
 import {Input} from "@/components/ui/input"
 import * as z from "zod"
 import {useToast} from "@/components/ui/use-toast"
+import {USER_DEMO_DATA} from "@/utils/demo-data";
 
 
 const formSchema = z.object({
@@ -29,9 +30,9 @@ function Page() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
+      firstName: USER_DEMO_DATA.name.split(" ")[0],
+      lastName: USER_DEMO_DATA.name.split(" ")[1],
+      email: USER_DEMO_DATA.emailAddress,
       //password: "",
     },
   })
